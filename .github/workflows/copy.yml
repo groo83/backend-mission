@@ -30,15 +30,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Checkout PR Code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-          # 중간에 브랜치, 리모트 소스를 바꾸어야 하므로 크리덴셜은 저장하지 않음
-          # 저장해 두면 권한 문제로 인해 push가 안 될 수 있음
-          persist-credentials: false
-
       - name: Extract PR Author Email
         run: |
           PR_COMMIT_SHA=$(git rev-list --max-parents=0 HEAD)  # PR의 첫 번째 커밋 SHA 찾기
