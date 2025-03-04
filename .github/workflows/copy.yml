@@ -35,9 +35,6 @@ jobs:
         with:
           ref: ${{ env.PR_BRANCH }}
           fetch-depth: 0
-          # 중간에 브랜치, 리모트 소스를 바꾸어야 하므로 크리덴셜은 저장하지 않음
-          # 저장해 두면 권한 문제로 인해 push가 안 될 수 있음
-          persist-credentials: false
 
       - name: Extract PR Author Email
         run: |
