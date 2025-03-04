@@ -67,7 +67,7 @@ jobs:
           gh pr create \
             --repo Murple-AI/backend-mission-submit \
             --base main \
-            --head {{ env.$NEW_BRANCH }} \
+            --head $NEW_BRANCH \
             --title "[Review] ${{ env.PR_AUTHOR }} / ${{ env.PR_AUTHOR_EMAIL }} - ${{ env.PR_TITLE }}" \
             --body-file <(echo "${{ github.event.pull_request.body }} (Original PR: #${{ env.PR_NUMBER }})")
         env:
