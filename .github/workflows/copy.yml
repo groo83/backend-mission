@@ -29,11 +29,15 @@ jobs:
           echo "SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # 최근 2개의 커밋을 가져옴
 
-      - name: Extract PR Author Email
+      - name: Get Commit Author Email
         run: |
-          PR_COMMIT_SHA=$(git rev-list --max-parents=0 HEAD)  # PR의 첫 번째 커밋 SHA 찾기
-          PR_AUTHOR_EMAIL=$(git show -s --format='%ae' $PR_COMMIT_SHA || echo "unknown@example.com")
+          PR_AUTHOR_EMAIL=$(git log -1 --pretty=format:'%ae')
+          echo "Commit Author Email: $EMAIL"
           echo "PR_AUTHOR_EMAIL=$PR_AUTHOR_EMAIL" >> $GITHUB_ENV
 
       - name: Add Private Repo source
