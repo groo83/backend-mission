@@ -16,7 +16,7 @@ data class PhoneDto(
                 number = phone.number,
                 countryCode = phone.countryCode!!,
                 label = phone.label.toString(),
-                isCertified = phone.isCertified!!,
+                isCertified = phone.isCertified,
                 //id = phone.id!!
 
             )
