@@ -12,7 +12,7 @@ data class Address(
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    val user: User,
+    val user: User? = null,
 
     @Column(length = 1024, nullable = false)
     @get:Size(max = 1024, message = "주소는 최대 1024자까지 가능합니다.")

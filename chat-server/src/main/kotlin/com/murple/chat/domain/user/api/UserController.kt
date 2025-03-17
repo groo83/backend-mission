@@ -4,15 +4,11 @@ import com.murple.chat.common.dto.DataResponse
 import com.murple.chat.domain.user.application.UserService
 import com.murple.chat.domain.user.dto.UserReqDto
 import com.murple.chat.domain.user.dto.UserResDto
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.validation.annotation.Validated
+import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/v1/user")
 class UserController (private val userService: UserService){
 
     @GetMapping("/{id}")
@@ -25,4 +21,14 @@ class UserController (private val userService: UserService){
         return DataResponse.create(userService.createUser(reqDto))
     }
 
+    @PutMapping("/{id}")
+    fun updateUser(@PathVariable id: Long, @RequestBody reqDto: UserReqDto): DataResponse<UserResDto> {
+        return DataResponse.create(userService.updateUser(id, reqDto))
+    }
+
+    @DeleteMapping("/{id}")
+    fun deleteUser(@PathVariable id: Long): DataResponse<Long> {
+        userService.deleteUser(id)
+        return DataResponse.create(id)
+    }
 }

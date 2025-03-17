@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Pattern
 @Entity
 data class Phone(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = 0,
+    val id: Long? = null,
 
     @Column(nullable = false)
     @field:Pattern(

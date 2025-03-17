@@ -33,6 +33,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("io.github.oshai:kotlin-logging-jvm:7.0.3")
+	implementation("com.googlecode.libphonenumber:libphonenumber:8.12.30")
 
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")

@@ -11,8 +11,8 @@ data class UserResDto(
     val email: String? = null,
     val phones: List<PhoneDto> = emptyList(),
     val addresses: List<AddressDto> = emptyList(),
-    val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime
+    val createdAt: LocalDateTime? = null,
+    val updatedAt: LocalDateTime? = null,
 ) {
     companion object {
         fun from(user: User): UserResDto {
