@@ -1,18 +1,24 @@
 package com.murple.chat.common.entity
 
 import jakarta.persistence.Column
+import jakarta.persistence.EntityListeners
 import jakarta.persistence.MappedSuperclass
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
+import org.springframework.format.annotation.DateTimeFormat
 import java.time.LocalDateTime
 
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener::class)
 abstract class BaseEntity {
+
     @CreatedDate
-    @Column(updatable = false, nullable = false)
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    @Column(updatable = false)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    var createdAt: LocalDateTime ?= null
 
     @LastModifiedDate
-    @Column( nullable = false)
-    val updatedAt: LocalDateTime = LocalDateTime.now()
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    var updatedAt: LocalDateTime ?= null
 }
