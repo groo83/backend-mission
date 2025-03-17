@@ -4,7 +4,7 @@ import com.murple.chat.common.code.ErrorCode
 
 data class ErrorResponse(
     val status: Int,       // HTTP 상태 코드
-    val errorCode: String, // (선택) 에러 코드
+    val errorCode: String?= null, // (선택) 에러 코드
     val message: String,    // 에러 메시지
     val violations: List<Violation>? = null
 ) {

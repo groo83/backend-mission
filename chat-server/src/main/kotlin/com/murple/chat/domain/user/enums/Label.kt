@@ -11,7 +11,7 @@ enum class Label(val code: String) {
             requireNotNull(code) { "code 값이 null일 수 없습니다." }
 
             return Label.values().find { it.code == code }
-                ?: throw IllegalArgumentException("일치하는 값이 없습니다.")
+                ?: throw IllegalArgumentException("일치하는 값이 없습니다. label 입력값: $code")
         }
     }
 

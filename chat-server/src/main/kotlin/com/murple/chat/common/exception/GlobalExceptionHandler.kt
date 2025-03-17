@@ -35,11 +35,23 @@ class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(IOException::class)
-    fun handleIOException(ex: IOException?): ResponseEntity<ErrorResponse> {
+    fun handleIOException(e: IOException?): ResponseEntity<ErrorResponse> {
         val errorResponse = ErrorResponse(
             ErrorCode.IO_ERROR.status,
             ErrorCode.IO_ERROR.code,
             ErrorCode.IO_ERROR.message
+        )
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .body(errorResponse)
+    }
+
+    @ExceptionHandler(IllegalArgumentException::class)
+    fun handleIOException(e: IllegalArgumentException?): ResponseEntity<ErrorResponse> {
+        val errorResponse = ErrorResponse(
+            HttpStatus.BAD_REQUEST.value(),
+            null,
+            e?.message ?: ""
         )
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
