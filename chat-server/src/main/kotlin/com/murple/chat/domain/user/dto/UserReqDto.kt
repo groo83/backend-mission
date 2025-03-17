@@ -1,7 +1,5 @@
 package com.murple.chat.domain.user.dto
 
-import com.murple.chat.common.annoation.ValidEnum
-import com.murple.chat.domain.user.enums.Gender
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.Size

@@ -4,7 +4,6 @@ import com.murple.chat.common.dto.DataResponse
 import com.murple.chat.domain.user.application.UserService
 import com.murple.chat.domain.user.dto.UserReqDto
 import com.murple.chat.domain.user.dto.UserResDto
-import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 @RestController

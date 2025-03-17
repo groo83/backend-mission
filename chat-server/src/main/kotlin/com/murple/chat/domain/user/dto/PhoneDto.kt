@@ -1,11 +1,9 @@
 package com.murple.chat.domain.user.dto
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil
-import com.murple.chat.common.annoation.ValidEnum
 import com.murple.chat.common.code.ErrorCode
 import com.murple.chat.common.exception.InvalidValueException
 import com.murple.chat.domain.user.Phone
-import com.murple.chat.domain.user.enums.Label
 
 data class PhoneDto(
     val number: String,
